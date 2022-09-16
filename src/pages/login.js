@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import FirebaseContext from "../context/firebase";
 import { Link, useNavigate } from "react-router-dom";
+import * as ROUTES from '../constants/routes';
 
 
 
@@ -8,16 +9,29 @@ export default function Login() {
   const history = useNavigate();
   const { firebase } = useContext(FirebaseContext);
 
+  const [username, setUsername] = useState('');
+  const [fullname, setFullname] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
   const [error, setError] = useState('');
   const isInvalid = password === "" || emailAddress === "";
 
-  const handleLogin = () => {};
+  const handleSignUp = async(event) => {
+    event.preventDefault();
+
+    try {
+      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+      history.push(ROUTES.DASHBOARD);
+    } catch (error) {
+      setEmailAddress('');
+      setPassword('');
+      setError(error.message);
+    }
+  };
 
   useEffect(() => {
-    document.title = 'Login - Instagram';
+    document.title = 'Sign Up - Instagram';
   }, []);
 
   return (
@@ -35,7 +49,7 @@ export default function Login() {
           </h1>  
           {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
 
-          <form>
+          <form onSubmit={handleSignUp} method="POST">
             <input
               aria-label="Enter your email address"
               type="text"
@@ -58,7 +72,7 @@ export default function Login() {
             </button>
           </form>
         </div>
-        <div className="flex justify-center items-center flex-col w-full bg-white p-4 border border-gray-primary">
+        <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
           <p className="text-sm">Don't have an account?{` `}
             <Link to="/signup" className="font-bold text-blue-medium">
               Sign up
