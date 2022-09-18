@@ -9,15 +9,13 @@ export default function Login() {
   const history = useNavigate();
   const { firebase } = useContext(FirebaseContext);
 
-  const [username, setUsername] = useState('');
-  const [fullname, setFullname] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
   const [error, setError] = useState('');
   const isInvalid = password === "" || emailAddress === "";
 
-  const handleSignUp = async(event) => {
+  const handleLogin = async(event) => {
     event.preventDefault();
 
     try {
@@ -26,12 +24,12 @@ export default function Login() {
     } catch (error) {
       setEmailAddress('');
       setPassword('');
-      setError(error.message);
+      setError(error.message)
     }
   };
 
   useEffect(() => {
-    document.title = 'Sign Up - Instagram';
+    document.title = 'Login - Instagram';
   }, []);
 
   return (
@@ -49,7 +47,7 @@ export default function Login() {
           </h1>  
           {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
 
-          <form onSubmit={handleSignUp} method="POST">
+          <form onSubmit={handleLogin} method="POST">
             <input
               aria-label="Enter your email address"
               type="text"
