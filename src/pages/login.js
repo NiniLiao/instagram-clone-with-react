@@ -54,6 +54,7 @@ export default function Login() {
               placeholder="Email address"
               className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
               onChange={({target}) => setEmailAddress(target.value)}
+              value={emailAddress}
             />  
             <input
               aria-label="Enter your passwrod"
@@ -61,6 +62,7 @@ export default function Login() {
               placeholder="Password"
               className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
               onChange={({target}) => setPassword(target.value)}
+              value={password}
             />
             <button
               disabled={isInvalid}
@@ -72,7 +74,7 @@ export default function Login() {
         </div>
         <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
           <p className="text-sm">Don't have an account?{` `}
-            <Link to="/signup" className="font-bold text-blue-medium">
+            <Link to={ROUTES.SIGN_UP} className="font-bold text-blue-medium">
               Sign up
             </Link>
           </p>
