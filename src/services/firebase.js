@@ -36,3 +36,38 @@ export async function getSuggestedProfiles(userId, following) {
     .map((user) => ({ ...user.data(), docId: user.id }))
     .filter((profile) => profile.userId !== userId && !following.includes(profile.userId));
 }
+
+// updateLoggedInUserFollowing, updateFollowedUserFollowers
+
+export async function updateLoggedInUserFollowing(
+  loggedInUserDocId,  // currently logged in user document id (leo's profile)
+  profileId, // the user that leo requests to follow
+  isFollowingProfile // true/false (am I currently following this person)
+) {
+  return firebase
+    .firestore()
+    .collection('users')
+    .doc(loggedInUserDocId)
+    .update({
+      following: isFollowingProfile ? 
+        FieldValue.arrayRemove(profileId) :
+        FieldValue.arrayUnion(profileId)
+    });
+}
+
+
+export async function updateFollowedUserFollowers(
+  profileDocId,  // currently logged in user document id (leo's profile)
+  loggedInUserDocId, // the user that leo requests to follow
+  isFollowingProfile // true/false (am I currently following this person)
+) {
+  return firebase
+    .firestore()
+    .collection('users')
+    .doc(profileDocId)
+    .update({
+      followers: isFollowingProfile ?
+        FieldValue.arrayRemove(loggedInUserDocId) :
+        FieldValue.arrayUnion(loggedInUserDocId)
+    });
+}

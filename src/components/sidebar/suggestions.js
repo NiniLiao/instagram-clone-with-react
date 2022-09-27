@@ -9,13 +9,13 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
 
   // go ahead and get the suggested profiles
   useEffect(() => {
-    async function suggestedProfiles() {
+    async function SuggestedProfiles() {
       const response = await getSuggestedProfiles(userId, following);
       setProfiles(response);
     }
     
     if (userId) {
-      suggestedProfiles();
+      SuggestedProfiles();
     }
   console.log('profiles', profiles);
   }, [userId]);
@@ -36,7 +36,7 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
         {profiles.map((profile) => (
           <SuggestedProfiles
             key={profile.docId}
-            spDocId={profile.docId}
+            profileDocId={profile.docId}
             username={profile.username}
             profileId={profile.userId}
             userId={userId}
