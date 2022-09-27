@@ -17,7 +17,7 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
     if (userId) {
       SuggestedProfiles();
     }
-  console.log('profiles', profiles);
+
   }, [userId]);
   // hint: use the firebase service
   // getSuggestedProfiles
