@@ -18,10 +18,13 @@ export default function usePhotos() {
       if (following.length > 0) {
         followedUserPhotos = await getPhotos(userId, following);
       }
+
+      followedUserPhotos.sort((a, b) => b.dateCreated - a.dateCreated);
+      setPhotos(followedUserPhotos);
     }
 
     getTimeLinePhotos()
-  }, []);
+  }, [userId]);
 
   return { photos };
 }
