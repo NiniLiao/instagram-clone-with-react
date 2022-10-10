@@ -4,11 +4,12 @@ import * as ROUTES from './constants/routes';
 import useAuthListener from './hooks/use-auth-listener';  
 import UserContext from './context/user';
 
-import ProtectedRoute from './helpers/protected.route';
+import ProtectedRoute from './helpers/protected-route';
 
 const Login = lazy(() => import('./pages/login'));  
 const SignUp = lazy(() => import('./pages/sign-up'));
 const Dashboard = lazy(() => import('./pages/dashboard')); 
+const Profile = lazy(() => import('./pages/profile'));
 const NotFound = lazy(() => import('./pages/not-found'));
   
 export default function App() {
@@ -20,11 +21,11 @@ export default function App() {
           <Routes>
             <Route path={ROUTES.LOGIN} element={<Login/>} />
             <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
+            <Route path={ROUTES.PROFILE} element={<Profile/>} />
             <Route path={ROUTES.DASHBOARD} element={
               <ProtectedRoute user={user}>
                 <Dashboard />
-              </ProtectedRoute>  
-              } 
+              </ProtectedRoute>} 
             />
                
             <Route path={ROUTES.NOT_FOUND} element={<NotFound/>}/>
