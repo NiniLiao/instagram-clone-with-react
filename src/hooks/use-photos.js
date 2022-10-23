@@ -1,6 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import UserContext from "../context/user";
-import { getPhotos, getUserByUserId } from "../services/firebase";
+import { useState, useEffect, useContext } from 'react';
+import UserContext from '../context/user';
+import { getPhotos, getUserByUserId } from '../services/firebase';
 
 export default function usePhotos() {
   const [photos, setPhotos] = useState(null);

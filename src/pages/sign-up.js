@@ -1,8 +1,8 @@
-import { useState, useContext, useEffect } from "react";
-import FirebaseContext from "../context/firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from 'react';
+import FirebaseContext from '../context/firebase';
+import { Link, useNavigate } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
-import { doesUsernameExist } from "../services/firebase";
+import { doesUsernameExist } from '../services/firebase';
 
 
 export default function SignUp() {

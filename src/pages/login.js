@@ -1,6 +1,6 @@
-import { useState, useContext, useEffect } from "react";
-import FirebaseContext from "../context/firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from 'react';
+import FirebaseContext from '../context/firebase';
+import { Link, useNavigate } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 
 
@@ -13,7 +13,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   const [error, setError] = useState('');
-  const isInvalid = password === "" || emailAddress === "";
+  const isInvalid = password === '' || emailAddress === '';
 
   const handleLogin = async(event) => {
     event.preventDefault();
