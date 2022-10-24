@@ -14,7 +14,7 @@ export default function usePhotos() {
       const [{ following }] = await getUserByUserId(userId);
       let followedUserPhotos = [];
 
-       // does the user actually follow people?
+      // does the user actually follow people?
       if (following.length > 0) {
         followedUserPhotos = await getPhotos(userId, following);
       }
@@ -23,7 +23,7 @@ export default function usePhotos() {
       setPhotos(followedUserPhotos);
     }
 
-    getTimeLinePhotos()
+    getTimeLinePhotos();
   }, [userId]);
 
   return { photos };

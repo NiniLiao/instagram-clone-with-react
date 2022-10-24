@@ -1,12 +1,18 @@
 {
     "extends": [
-      "prettier", 
+      "plugin:prettier/recommended",
       "plugin:react/jsx-runtime", 
       "plugin:jsx-a11y/recommended", 
       "plugin:react-hooks/recommended"
     ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+     },
     "parser": "@babel/eslint-parser",
     "parserOptions": {
+      "sourceType": "module",
       "ecmaVersion": 8,
       "ecmaFeatures": {
         "experimentalObjectRestSpread": true,

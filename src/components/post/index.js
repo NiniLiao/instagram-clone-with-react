@@ -1,14 +1,14 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import Header from "./header";
-import Image from "./image";
+import Header from './header';
+import Image from './image';
 import Actions from './actions';
 import Footer from './footer';
 import Comments from './comments';
 
 export default function Post({ content }) {
   const commentInput = useRef(null);
-  const handleFocus = () => commentInput.current.focus();  
+  const handleFocus = () => commentInput.current.focus();
   // components
   //  -> header, image, actions (like & comment icons), footer, comments
   return (
@@ -28,8 +28,8 @@ export default function Post({ content }) {
         posted={content.dateCreated}
         commentInput={commentInput}
       />
-    </div>  
-  );  
+    </div>
+  );
 }
 
 Post.propTypes = {

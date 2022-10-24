@@ -25,10 +25,10 @@ export default function App() {
             <Route path={ROUTES.DASHBOARD} element={
               <ProtectedRoute user={user}>
                 <Dashboard />
-              </ProtectedRoute>} 
-            />
+              </ProtectedRoute>
+            }/>
                
-            <Route path={ROUTES.NOT_FOUND} element={<NotFound/>}/>
+            <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
           </Routes>
         </Suspense>
       </Router>

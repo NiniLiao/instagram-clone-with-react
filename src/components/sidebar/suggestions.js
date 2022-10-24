@@ -13,11 +13,10 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
       const response = await getSuggestedProfiles(userId, following);
       setProfiles(response);
     }
-    
+
     if (userId) {
       SuggestedProfiles();
     }
-
   }, [userId]);
   // hint: use the firebase service
   // getSuggestedProfiles
@@ -28,11 +27,11 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
   return !profiles ? (
     <Skeleton count={1} height={150} className="mt-5" />
   ) : profiles.length > 0 ? (
-    <div className='rounded flex flex-col'>
-      <div className='text-sm flex items-center align-items justify-between mb-2'>
-        <p className='font-bold text-gray-base'>Suggestions for you</p>
+    <div className="rounded flex flex-col">
+      <div className="text-sm flex items-center align-items justify-between mb-2">
+        <p className="font-bold text-gray-base">Suggestions for you</p>
       </div>
-      <div className='mt-4 grid gap-5'>
+      <div className="mt-4 grid gap-5">
         {profiles.map((profile) => (
           <SuggestedProfiles
             key={profile.docId}
@@ -41,7 +40,7 @@ export default function Suggestions({ userId, following, loggedInUserDocId }) {
             profileId={profile.userId}
             userId={userId}
             loggedInUserDocId={loggedInUserDocId}
-          />  
+          />
         ))}
       </div>
     </div>
