@@ -27,7 +27,6 @@ export default function App() {
                 <Dashboard />
               </ProtectedRoute>
             }/>
-               
             <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
           </Routes>
         </Suspense>
