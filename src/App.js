@@ -22,9 +22,11 @@ export default function App() {
             <Route path={ROUTES.LOGIN} element={<Login/>} />
             <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
             <Route path={ROUTES.PROFILE} element={<Profile/>} />
-            <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
-              <Dashboard />
-            </ProtectedRoute>
+            <Route path={ROUTES.DASHBOARD} element={
+              <ProtectedRoute user={user}>
+                <Dashboard />
+              </ProtectedRoute>
+            }/>
                
             <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
           </Routes>
