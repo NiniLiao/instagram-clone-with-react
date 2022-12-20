@@ -1,6 +1,7 @@
 import Firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { getAuth } from "firebase/auth";
 
 // here i want to import seed file
 // import { seedDatabase } from '../seed';
@@ -20,4 +21,5 @@ const { FieldValue } = Firebase.firestore;
 // here is where i want to call the seed file (only ONCE!)
 // seedDatabase(firebase);
 
+export const auth = getAuth(firebase);
 export { firebase, FieldValue };
