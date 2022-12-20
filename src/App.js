@@ -23,7 +23,7 @@ export default function App() {
             <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
             <Route path={ROUTES.PROFILE} element={<Profile/>} />
             <Route path={ROUTES.DASHBOARD} element={
-              <ProtectedRoute user={user}>
+              <ProtectedRoute user={user} exact>
                 <Dashboard />
               </ProtectedRoute>
             }/>
